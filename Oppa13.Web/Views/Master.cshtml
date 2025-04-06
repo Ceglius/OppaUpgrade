@@ -1,0 +1,281 @@
+﻿@using ClientDependency.Core.Config
+@using Umbraco.Community.Contentment.DataEditors
+@using Umbraco.Web.JavaScript
+@inherits UmbracoViewPage<IPublishedContent>
+@{
+    Layout = null;
+
+    var title = $"{Model.Name} - OPPA nekilnojamojo turto agentūra";
+    var keywords = string.Empty;
+    var description = string.Empty;
+    var openGraphImageUrl = string.Empty;
+
+    if (Model is IPuslapioSeopasirinkimai seopasirinkimai)
+    {
+        if (!string.IsNullOrEmpty(seopasirinkimai.MetaAntraste))
+        {
+            title = seopasirinkimai.MetaAntraste;
+        }
+
+        description = seopasirinkimai.MetaAprasymas;
+        keywords = seopasirinkimai.MetaRanktazodziai;
+
+        if (seopasirinkimai.MetaNuotrauka != null && seopasirinkimai.MetaNuotrauka is Image image)
+        {
+            openGraphImageUrl = image.GetCropUrl(width: 1500);
+        }
+
+        else if (Model is IObjektoAprasymoPasirinkimai objektoaprasymopasirinkimai)
+        {
+            if (objektoaprasymopasirinkimai.Nuotraukos != null && objektoaprasymopasirinkimai.PagrindineNuotrauka is Image pagridnineNuotrauka)
+            {
+                openGraphImageUrl = pagridnineNuotrauka.GetCropUrl(width: 1500);
+            }
+        } else if (Model is Brokeris brokeris)
+        {
+            if (brokeris.Nuotrauka != null && brokeris.Nuotrauka is Image pagridnineNuotrauka)
+            {
+                openGraphImageUrl = pagridnineNuotrauka.GetCropUrl(width: 1500);
+            }
+        }
+        else
+        {
+            openGraphImageUrl = "images/meta-logo.jpg";
+        }
+
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@title</title>
+    <meta name="keywords" content="@keywords" />
+    <meta name="description" content="@description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- OPEN GRAPH - http://ogp.me -->
+    <meta property="og:url" content="@Model.Url(mode: UrlMode.Absolute)">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@title">
+    <meta property="og:description" content="@description">
+    <meta property="og:site_name" content="OPPA">
+    <meta property="og:image" content="https://www.oppa.lt/@openGraphImageUrl" />
+
+    <!-- TWITTER CARD - https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup.html -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="@Model.Url(mode: UrlMode.Absolute)">
+    <meta name="twitter:title" content="@title">
+    <meta name="twitter:description" content="@description">
+    <meta property="og:image" content="https://www.oppa.lt/@openGraphImageUrl">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon"/>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+    <!-- CSS Global Compulsory (Do not remove)-->
+    <link rel="stylesheet" href="~/css/font-awesome/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/flaticon/flaticon.css" />
+    <link rel="stylesheet" href="~/css/bootstrap/bootstrap.min.css" />
+
+    <!-- Page CSS Implementing Plugins (Remove the plugin CSS here if site does not use that feature)-->
+    <link rel="stylesheet" href="~/css/select2/select2.css" />
+    <link rel="stylesheet" href="~/css/range-slider/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="~/css/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/css/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="~/css/datetimepicker/datetimepicker.min.css" />
+    <link rel="stylesheet" href="~/css/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/css/select2/select2.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+
+
+    <!-- Template Style -->
+    <link rel="stylesheet" href="~/css/style.css?v=@ClientDependencySettings.Instance.Version" />
+    <link rel="stylesheet" href="~/css/cookie.css?v=@ClientDependencySettings.Instance.Version" />
+    <style>
+
+        .field-validation-error {
+            width: 100%;
+            margin-top: 5px;
+            font-size: 85%;
+            color: #dc3545;
+            display: block;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-transform: none;
+        }
+
+        .statusas {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            --swiper-theme-color: #007aff;
+            --swiper-navigation-size: 44px;
+            font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+            transform: rotate(-45deg);
+            position: absolute;
+            text-align: center;
+            z-index: 2;
+            text-transform: uppercase;
+            width: 200px;
+            height: 30px;
+            line-height: 32px;
+            left: -40px;
+            top: 45px;
+            font-size: 17px;
+            font-weight: 700;
+            background: #a39f9f !important;
+            color: #fff;
+            display: block;
+        }
+
+        .statusas-mazas {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            --swiper-theme-color: #007aff;
+            --swiper-navigation-size: 44px;
+            font-family: 'Open Sans', sans-serif;
+            text-align: right;
+            box-sizing: border-box;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 14px;
+            float: left;
+            margin-right: 15px;
+            background: #c29b40 !important;
+            color: #fff;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .property-image {
+            overflow: hidden;
+        }
+
+        .col-sm-6 .property-card {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        if (localStorage.getItem('consentMode') === null) {
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'personalization_storage': 'denied',
+                'functionality_storage': 'denied',
+                'security_storage': 'denied',
+                'ad_personalization': 'denied',
+                'ad_user_data': 'denied',
+            });
+        } else {
+            gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+        }
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W4TDFCLQ');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+
+    @Html.Partial("~/Views/Partials/Header.cshtml")
+    
+    @RenderBody()
+    
+    @Html.Partial("~/Views/Partials/Footer.cshtml")
+    
+    @Html.Partial("~/Views/Partials/Cookie.cshtml")
+
+<!-- JS Global Compulsory (Do not remove)-->
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/js/popper/popper.min.js"></script>
+    <script src="~/js/bootstrap/bootstrap.min.js"></script>
+    <script defer src="~/js/watermark-custom.js?v=@ClientDependencySettings.Instance.Version"></script>
+    <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
+    <script src="~/js/jquery.appear.js"></script>
+    <script src="~/js/counter/jquery.countTo.js"></script>
+    <script src="~/js/select2/select2.full.js"></script>
+    <script src="~/js/range-slider/ion.rangeSlider.min.js"></script>
+    <script src="~/js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/js/jarallax/jarallax.min.js"></script>
+    <script src="~/js/jarallax/jarallax-video.min.js"></script>
+    <script src="~/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/slick/slick.min.js"></script>
+    <script src="~/js/fslightbox.js"></script>
+    <script src="~/js/datetimepicker/moment.min.js"></script>
+    <script src="~/js/datetimepicker/datetimepicker.min.js"></script>
+    <script src="~/js/select2/select2.full.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="~/js/jquery.watermark.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
+    <!-- Template Scripts (Do not remove)-->
+    <script src="~/js/cookie.js"></script>
+    <script src="~/js/custom.js?v=@ClientDependencySettings.Instance.Version"></script>
+
+    @if (Model.ContentType.Alias == Brokeriai.ModelTypeAlias)
+    {
+        <script>
+            const brokerCard = document.querySelector("#broker-card");
+            brokerCard.classList = "";
+            brokerCard.classList.add("col-md-12", "mb-3", "mb-md-4")
+        </script>
+    }
+    
+    @if(Model.ContentType.Alias == NoriuIsigytiPuslapis.ModelTypeAlias)
+    {
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+
+                document.querySelectorAll('.card-info__remove button').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+
+                        const card = btn.closest('.uzklausos__item');
+                        const id = card.getAttribute('data-id');
+                        const urlController = `/umbraco/surface/isigytiForma/istrinti/${id}`;
+
+                        fetch(urlController, {
+                            method: 'POST'
+                        })
+                            .then(function (response) {
+                                card.remove();
+
+                            })
+                            .catch(function (error) {
+                                console.error('Error deleting card:', error);
+                            });
+                    });
+                });
+            });
+        </script>
+    }
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4TDFCLQ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</body>
+</html>
