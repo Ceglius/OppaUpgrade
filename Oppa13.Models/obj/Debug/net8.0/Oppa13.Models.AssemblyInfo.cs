@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Oppa13.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d872eaee84a97e63ee7a439de91e62dcc34162bb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ebeb788742b303801665898f9602ca792084225")]
 [assembly: System.Reflection.AssemblyProductAttribute("Oppa13.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Oppa13.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
