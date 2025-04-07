@@ -1,0 +1,214 @@
+.cookie-consent-banner {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0f1c45;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 1000;
+}
+
+@media(max-width: 864px) {
+    .cookie-consent-banner {
+        justify-content: center;
+        padding: 15px;
+    }
+}
+
+.cookie-consent-button {
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+    .cookie-consent-button.btn-grayscale:hover {
+        border: 2px solid #000;
+    }
+
+    .cookie-consent-button:active {
+        opacity: .5;
+    }
+
+    .cookie-consent-button.btn-success {
+        background-color: #c29b40;
+        color: white;
+        font-size: 20px;
+    }
+
+        .cookie-consent-button.btn-success:hover {
+            background-color: #ffc107;
+            border: 2px solid transparent;
+        }
+
+    .cookie-consent-button.btn-grayscale {
+        background-color: #dfe1e5;
+        color: black;
+        font-size: 20px;
+    }
+
+    .cookie-consent-button.btn-outline {
+        background-color: #e6f4ea;
+        color: #c29b40;
+    }
+
+.cookie-consent-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media(max-width: 864px) {
+    .cookie-consent-text {
+        justify-content: center;
+    }
+}
+
+.cookie-consent-text p {
+    color: #ffff;
+    font-size: 20px;
+    margin: 0;
+}
+
+.cookie-consent-text a {
+    font-size: 20px;
+    color: #c29b40;
+    text-decoration: underline;
+}
+
+
+
+.cookie-consent-text a:hover {
+    text-decoration: none;
+}
+
+.cookie-consent-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+
+@media(max-width: 991px) {
+
+
+    .cookie-consent-text p,
+    .cookie-consent-text a {
+        font-size: 18px;
+    }
+
+    .cookie-consent-banner {
+        padding: 25px
+    }
+
+    .cookie-consent-button.btn-success,
+    .cookie-consent-button.btn-grayscale {
+        font-size: 18px;
+    }
+
+    .cookie-consent-button {
+        padding: 6px 14px;
+    }
+}
+
+@media(max-width: 768px) {
+
+     .cookie-consent-text p,
+    .cookie-consent-text a  {
+        font-size: 16px;
+    }
+
+    .cookie-consent-banner {
+        padding: 15px
+    }
+
+    .cookie-consent-button.btn-success,
+    .cookie-consent-button.btn-grayscale {
+        font-size: 16px;
+    }
+
+    .cookie-consent-button {
+        padding: 4px 12px;
+    }
+}
+
+.field-validation-error {
+    width: 100%;
+    margin-top: 5px;
+    font-size: 85%;
+    color: #dc3545;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+}
+
+.statusas {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --swiper-theme-color: #007aff;
+    --swiper-navigation-size: 44px;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    text-transform: uppercase;
+    width: 200px;
+    height: 30px;
+    line-height: 32px;
+    left: -40px;
+    top: 45px;
+    font-size: 17px;
+    font-weight: 700;
+    background: #a39f9f !important;
+    color: #fff;
+    display: block;
+}
+
+.statusas-mazas {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --swiper-theme-color: #007aff;
+    --swiper-navigation-size: 44px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: right;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    float: left;
+    margin-right: 15px;
+    background: #c29b40 !important;
+    color: #fff;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.property-image {
+    overflow: hidden;
+}
+
+.col-sm-6 .property-card {
+    margin-bottom: 20px;
+}

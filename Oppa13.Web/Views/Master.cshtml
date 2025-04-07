@@ -1,8 +1,9 @@
-﻿@using ClientDependency.Core.Config
+﻿@*@using ClientDependency.Core.Config
 @using Umbraco.Community.Contentment.DataEditors
-@using Umbraco.Web.JavaScript
+@using Umbraco.Web.JavaScript*@
+
 @inherits UmbracoViewPage<IPublishedContent>
-@{
+@*@{
     Layout = null;
 
     var title = $"{Model.Name} - OPPA nekilnojamojo turto agentūra";
@@ -20,7 +21,7 @@
         description = seopasirinkimai.MetaAprasymas;
         keywords = seopasirinkimai.MetaRanktazodziai;
 
-        if (seopasirinkimai.MetaNuotrauka != null && seopasirinkimai.MetaNuotrauka is Image image)
+       if (seopasirinkimai.MetaNuotrauka != null && seopasirinkimai.MetaNuotrauka is Image image)
         {
             openGraphImageUrl = image.GetCropUrl(width: 1500);
         }
@@ -44,12 +45,12 @@
         }
 
     }
-}
+}*@
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    @*<meta charset="utf-8">
     <title>@title</title>
     <meta name="keywords" content="@keywords" />
     <meta name="description" content="@description" />
@@ -68,7 +69,7 @@
     <meta name="twitter:url" content="@Model.Url(mode: UrlMode.Absolute)">
     <meta name="twitter:title" content="@title">
     <meta name="twitter:description" content="@description">
-    <meta property="og:image" content="https://www.oppa.lt/@openGraphImageUrl">
+    <meta property="og:image" content="https://www.oppa.lt/@openGraphImageUrl">*@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon"/>
@@ -95,77 +96,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
 
-
     <!-- Template Style -->
-    <link rel="stylesheet" href="~/css/style.css?v=@ClientDependencySettings.Instance.Version" />
-    <link rel="stylesheet" href="~/css/cookie.css?v=@ClientDependencySettings.Instance.Version" />
-    <style>
-
-        .field-validation-error {
-            width: 100%;
-            margin-top: 5px;
-            font-size: 85%;
-            color: #dc3545;
-            display: block;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            text-transform: none;
-        }
-
-        .statusas {
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-            --swiper-theme-color: #007aff;
-            --swiper-navigation-size: 44px;
-            font-family: 'Open Sans', sans-serif;
-            box-sizing: border-box;
-            transform: rotate(-45deg);
-            position: absolute;
-            text-align: center;
-            z-index: 2;
-            text-transform: uppercase;
-            width: 200px;
-            height: 30px;
-            line-height: 32px;
-            left: -40px;
-            top: 45px;
-            font-size: 17px;
-            font-weight: 700;
-            background: #a39f9f !important;
-            color: #fff;
-            display: block;
-        }
-
-        .statusas-mazas {
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-            --swiper-theme-color: #007aff;
-            --swiper-navigation-size: 44px;
-            font-family: 'Open Sans', sans-serif;
-            text-align: right;
-            box-sizing: border-box;
-            padding-left: 15px;
-            padding-right: 15px;
-            height: 25px;
-            line-height: 25px;
-            font-size: 14px;
-            float: left;
-            margin-right: 15px;
-            background: #c29b40 !important;
-            color: #fff;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .property-image {
-            overflow: hidden;
-        }
-
-        .col-sm-6 .property-card {
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/style.css?" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/cookie.css" asp-append-version="true"/>
+    <!-- Google Tag Analytics -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -184,6 +118,7 @@
             gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
         }
     </script>
+    <!-- End Google Tag Analytics -->
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
@@ -199,13 +134,13 @@
 </head>
 <body>
 
-    @Html.Partial("~/Views/Partials/Header.cshtml")
+    @*@Html.Partial("~/Views/Partials/Header.cshtml")*@
     
     @RenderBody()
     
-    @Html.Partial("~/Views/Partials/Footer.cshtml")
+    @*@Html.Partial("~/Views/Partials/Footer.cshtml")
     
-    @Html.Partial("~/Views/Partials/Cookie.cshtml")
+    @Html.Partial("~/Views/Partials/Cookie.cshtml")*@
 
 <!-- JS Global Compulsory (Do not remove)-->
     <script src="~/js/jquery-3.4.1.min.js"></script>
@@ -214,7 +149,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="~/js/popper/popper.min.js"></script>
     <script src="~/js/bootstrap/bootstrap.min.js"></script>
-    <script defer src="~/js/watermark-custom.js?v=@ClientDependencySettings.Instance.Version"></script>
+    <script defer src="~/js/watermark-custom.js?" asp-append-version="true"></script>
     <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
     <script src="~/js/jquery.appear.js"></script>
     <script src="~/js/counter/jquery.countTo.js"></script>
@@ -232,12 +167,12 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="~/js/jquery.watermark.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-<!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
+    <!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
     <!-- Template Scripts (Do not remove)-->
     <script src="~/js/cookie.js"></script>
-    <script src="~/js/custom.js?v=@ClientDependencySettings.Instance.Version"></script>
+    <script src="~/js/custom.js?" asp-append-version="true"></script>
 
-    @if (Model.ContentType.Alias == Brokeriai.ModelTypeAlias)
+    @*@if (Model.ContentType.Alias == Brokeriai.ModelTypeAlias)
     {
         <script>
             const brokerCard = document.querySelector("#broker-card");
@@ -272,7 +207,7 @@
                 });
             });
         </script>
-    }
+    }*@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4TDFCLQ"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

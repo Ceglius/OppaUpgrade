@@ -1,0 +1,45 @@
+
+
+/**umb_name:Žalias tekstas*/
+text-primary {
+	color: #26ae61;
+}
+
+/**umb_name:Antraštė 1*/
+h1 {
+	font-size: 28px;
+}
+
+/**umb_name:Antraštė 2*/
+h2 {
+	font-size: 26px;
+}
+
+/**umb_name:Antraštė 3*/
+h3 {
+	font-size: 24px;
+}
+
+/**umb_name:Antraštė 4*/
+h4 {
+	font-size: 22px;
+}
+
+/**umb_name:Antraštė 5*/
+h5 {
+	font-size: 20px;
+}
+
+/**umb_name:Žalias mygtukas*/
+a.btn.btn-primary{
+    background: #26ae61;
+    border-color: #26ae61;
+    color: #ffffff;
+}
+
+/**umb_name:Tamsus mygtukas*/
+a.btn.btn-dark{
+    background: #001022;
+    border-color: #001022;
+    color: #ffffff;
+}
